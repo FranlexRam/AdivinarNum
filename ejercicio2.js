@@ -13,9 +13,10 @@ for (attempts; attempts<3; attempts++) {
     num1 = parseInt(prompt('Enter the 1st number'));
     num2 = parseInt(prompt('Enter the 2nd number'));
 
-    if (num1 >= min && num1 <=max && num2>=min && num2<=max){
-        if (num1 == random || num2 == random){
+    if (num1 >= 1 && num1 <=10 && num2>=1 && num2<=10){
+        if (num1 == random || num2 == random && attempts<2){
             alert('Excellent, You guessed the number at the '+(attempts+1)+ ' attempt!!');
+            break;
         } else if (num1 !== random && num2 != random){
             alert('Incorrect, You still have '+(2-attempts)+' attempts');
         } else{
@@ -24,9 +25,12 @@ for (attempts; attempts<3; attempts++) {
         
     } else {
         alert('Remember that num1 and num2 has to be from '+min+ ' to '+max);
+        attempts--;
     }
 }
-if (num1==random || num2==random){
+
+
+if (num1==random || num2==random && attempts==2){
     alert('Congratulations! You guessed the number in the last attempt!');
 } else {
     alert('Sorry, You have no more attempts left');
